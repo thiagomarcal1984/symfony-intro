@@ -18,12 +18,8 @@ class SeriesController extends AbstractController
             'Loki',
             'Suits',
         ];
-        $html = '<ul>';
-        foreach ($seriesList as $serie) {
-            $html .= '<li>' . $serie . '</li>';
-        }
-        $html .= '</ul>';
-        // return new Response($html);
-        return new JsonResponse($seriesList);
+        return $this->render('series/index.html.twig', [
+            'seriesList' => $seriesList,
+        ]);
     }
 }

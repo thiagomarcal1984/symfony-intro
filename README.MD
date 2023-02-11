@@ -108,3 +108,34 @@ public function index(Request $request): Response
 O controller `OlaMundoController` será excluído.
 
 Há vários subtipos de `Response` no Symfony. No exemplo, usaremos o `JsonResponse`, cujo cabeçalho `Content-Type` já é definido para `application/json`.
+
+# Conhecendo o Twig
+A sintaxe do Twig é **MUITO** semelhante à do Jinja2 e à do Django template engine.
+
+O método `$this->render` também é muito semelhante aos métodos de renderização do Django e do Flask: um parâmetro para informar o arquivo de template, e outro para informar o array/dicionário com o contexto da resposta:
+```PHP
+class HomeController extends AbstractController
+{
+    #[Route('/home', name: 'app_home', methods: ['GET'])]
+    public function index(): Response
+    {
+        $lista =  [
+            'Item 1',
+            'Item 2',
+            'Item 3',
+        ];
+        return $this->render('home/index.html.twig', [
+            'lista' => $lista,
+        ]);
+    }
+}
+```
+Renderização em `index.html.twig`:
+```HTML 
+<h1>Minha lista</h1>
+<ul>
+    {% for item in lista %}
+        <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+```
