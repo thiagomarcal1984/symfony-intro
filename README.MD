@@ -169,3 +169,10 @@ Página index.html.twig:
 As páginas-filha usam a diretiva `extends`. Os blocos de código são declarados nas páginas-pai e substituídos nas páginas-filha por meio da diretiva  `block`. 
 
 As diretivas são declaradas dentro dos caracteres `{%` e `%}`.
+
+# Mais funcionalidades
+O Twig possui filtros (pipes) que modificam as interpolações de variáveis do contexto. Por exemplo: o filtro `raw` serve para permitir XSS (Cross Site Scripting, um ataque de injeção de HTML/JavaScript) e caracteres especiais (o caso do apóstrofes de Grey's Anatomy: por padrão o apóstrofe é escrito com um outro encoding no código-fonte). Na prática, variáveis com conteúdo HTML são integralmente interpoladas (escritas) no template, sem filtro.
+
+Os blocos de comentário no Twig se escrevem entre `{#` e `#}`.
+
+Se a diretiva `block <nome>` não for invocada nas páginas-filha, elas usam o conteúdo padrão que está definido na página-pai.

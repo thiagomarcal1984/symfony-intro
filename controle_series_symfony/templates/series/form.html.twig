@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{#
+    Como este código está comentado, o título padrão 
+    do bloco title será usado:
+    {% block title %}Título Específico{% endblock %}
+#}
+
+{% block body %}
+    <form method="post">
+        <label for="name">Nome da série</label>
+        <input type="text" name="name" id="name">
+        <button>Adicionar</button>
+    </form>
+{% endblock %}
