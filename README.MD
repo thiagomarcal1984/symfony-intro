@@ -98,3 +98,13 @@ public function index(Request $request): Response
     $request->request->get('name');
 }
 ```
+# Parâmetros de Route
+| Nome do parâmetro | Função |
+|---|---|
+| `path` | URI (caminho) para a função que vai retornar a resposta. |
+| `name` | Nome pelo qual os templates localizam a URI da rota. |
+| `methods` | Array de métodos HTTP permitidos na rota. |
+
+O controller `OlaMundoController` será excluído.
+
+Há vários subtipos de `Response` no Symfony. No exemplo, usaremos o `JsonResponse`, cujo cabeçalho `Content-Type` já é definido para `application/json`.
