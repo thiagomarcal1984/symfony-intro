@@ -139,3 +139,33 @@ Renderização em `index.html.twig`:
     {% endfor %}
 </ul>
 ```
+# Entendendo o layout
+Novamente as semelhanças do Twig com o Jinja2 e o Django template engine: os blocos de código extensíveis.
+
+Página base.html.twig:
+```HTML
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Título Padrão!{% endblock %}</title>
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>
+```
+
+Página index.html.twig: 
+```HTML
+{% extends 'base.html.twig' %}
+
+{% block title %}Minha página Index{% endblock %}
+
+{% block body %}
+    <h1>Conteúdo da página Index.</h1>
+{% endblock %}
+```
+
+As páginas-filha usam a diretiva `extends`. Os blocos de código são declarados nas páginas-pai e substituídos nas páginas-filha por meio da diretiva  `block`. 
+
+As diretivas são declaradas dentro dos caracteres `{%` e `%}`.
