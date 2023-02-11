@@ -67,3 +67,14 @@ Por padrão o modo de debug fica ligado (ideal para a fase de desenvolvimento). 
 ```
 APP_DEBUG=0
 ```
+# Lidando com Request e Response
+O parâmetro name dentro da annotation `Route` **NÃO** é obrigatório.
+
+As classes de requisição `Request` e resposta `Response` do Symfony estão no namespace `Symfony\Component\HttpFoundation`.
+
+O Symfony dispõe de uma função que combina os comandos `var_dump` e `die`: é a função `dd($variavel)`. Boa para comparar os valores das variáveis durante o debug.
+
+As respostas `Response` no Symfony recebem 3 parâmetros no seu construtor:
+1. O conteúdo;
+2. O código de status HTTP; e
+3. Um dicionário (key/value) com cabeçalhos HTTP.
