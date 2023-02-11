@@ -17,3 +17,53 @@ Para rodar o código usando servidor PHP built-in:
 php -S 0.0.0.0:8080 -t public
 ```
 Repare: o parâmetro `-S` está em maiúsculo e indica o host + a porta onde o servidor web PHP vai escutar as requisições. O parâmetro `-t` se refere ao document root, à pasta de onde o servidor vai iniciar a aplicação (no caso, a pasta public).
+
+# Definindo a primeira rota
+Quando instalamos o Symfony usando o composer, podemos acessar seu console por meio do seguinte comando na raiz do projeto:
+```
+cd aplicacao
+php .\bin\console
+```
+Esse console facilita a criação de objetos do Symfony e dos seus outros componentes (ORM Doctrine etc.).
+
+Os controladores são usados como base para a criação automática de rotas.
+
+Para criar um controller, use: 
+```
+php \.bin\console make:controller MeuController
+```
+Com este comando, a classe PHP de Controller e o template (arquivo .html.twig) são criados.
+
+O arquivo de Controller possui uma annotation chamado Route. As annotations do PHP são de dois tipos: as de comentários e as de attributes:
+
+```php
+// BEFORE: annotations defined with Doctrine Annotations library
+use Symfony\Component\Routing\Annotation\Route;
+
+class SomeController
+{
+    /**
+     * @Route("/path", name="action")
+     */
+    public function someAction()
+    {
+        // ...
+    }
+}
+// AFTER: annotations defined with PHP 8 attributes
+use Symfony\Component\Routing\Annotation\Route;
+
+class SomeController
+{
+    #[Route('/path', name: 'action')]
+    public function someAction()
+    {
+        // ...
+    }
+}
+```
+
+Por padrão o modo de debug fica ligado (ideal para a fase de desenvolvimento). Para desligar o modo de debug do Symfony, edite o arquivo `.env` incluindo a seguinte linha:
+```
+APP_DEBUG=0
+```
