@@ -78,3 +78,23 @@ As respostas `Response` no Symfony recebem 3 parâmetros no seu construtor:
 1. O conteúdo;
 2. O código de status HTTP; e
 3. Um dicionário (key/value) com cabeçalhos HTTP.
+
+# Para saber mais: método get
+Dentro da requisição `Request` temos o método `get`. Ele busca valores tanto da query string (método `GET`) quanto do payload (método `POST`). **Porém** o recomendado é ser explicíto sobre de onde vem a variável que estamos procurando: 
+```PHP
+<?php...
+
+use Symfony\Component\HttpFoundation\Request;
+
+...
+
+#[Route('/ola_mundo')]
+public function index(Request $request): Response
+{
+    // $_GET parameters
+    $request->query->get('name');
+
+    // $_POST parameters
+    $request->request->get('name');
+}
+```
