@@ -26,7 +26,7 @@ class Series
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string // O retorno NUNCA pode ser nulo.
     {
         return $this->name;
     }

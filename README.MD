@@ -286,3 +286,10 @@ Comando para executar um SQL a partir do Console (o SQL precisa estar entre aspa
 ```
 php .\bin\console doctrine:query:sql "select * from series"
 ```
+
+# Usando o EntityManager
+Os repositórios gerados pelo CLI do Symfony extendem da classe ServiceEntityRepository. Isso permite a injeção de dependência nos construtores dos Controllers!
+
+Um Controller pode ter várias funções com nomes diferentes e com rotas iguais, desde que os métodos HTTP permitidos em cada função sejam diferentes.
+
+Como o tipo de dados da lista de séries mudou de string para Series, o template precisou mencionar qual atributo de Series será exibido.
