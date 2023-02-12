@@ -271,3 +271,18 @@ Caso o Symfony não consiga ler o `.env.local`, execute o comando `composer dump
 ```
 composer dump-env prod
 ```
+
+# Migrations
+Comando para criar as migrações no Symfony:
+
+```
+php bin/console make:migration
+```
+Comando para aplicar as migrações no banco de dados com o Doctrine:
+```
+php bin/console doctrine:migrations:migrate
+```
+Comando para executar um SQL a partir do Console (o SQL precisa estar entre aspas):
+```
+php .\bin\console doctrine:query:sql "select * from series"
+```
