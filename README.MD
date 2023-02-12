@@ -242,3 +242,22 @@ Perceba a diferença de declarar a diretiva (`{% %}`) `block` e interpolar (`{{ 
 ```
 
 Para fins de declaração de um bloco, as sintaxes com diretivas ou com interpolação tem o **mesmíssimo efeito, exceto que as páginas-filha são obrigadas a declarar a diretiva block**.
+
+# Entidades
+Para criar uma entidade no Symfony na linha de comando: 
+```
+php bin/console make:entity Entidade
+```
+Este código cria a entidade em si e o repositório para acessá-la no banco de dados. No entanto, algumas versões do CLI não declara os tipos das variáveis da entidade (afinal, o PHP não obriga a tipagem).
+
+Se você tipar as variáveis das entidades, o parâmetro `type` na annotation `Column` deixa de ser necessário.
+
+As variáveis privadas podem ser declaradas como parâmetros no construtor da entidade:
+```PHP
+public function __construct(
+    #[ORM\Column]
+    private ?string $name
+)
+{
+}
+```
