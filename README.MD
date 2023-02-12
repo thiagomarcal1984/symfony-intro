@@ -214,3 +214,31 @@ npm install sass-loader@^13.0.0 sass --save-dev
 ```
 
 ^^Toda essa dor de cabeça pra gerar **apenas** um arquivo CSS a partir do Bootstrap.
+
+# Estilizando as views
+Interpolar a função `asset` no template é um meio de garantir que as referências a arquivos estáticos sempre tomarão por base o caminho raiz da aplicação:
+```HTML
+<link rel="stylesheet" href="{{ asset('/build/style.css') }}">
+```
+
+Perceba a diferença de declarar a diretiva (`{% %}`) `block` e interpolar (`{{ }}`) um `block` já declarado: na interpolação chamamos uma função com um parâmetro de string.
+
+```HTML
+<html>
+    <head>
+        <meta charset="UTF-8">
+        {# Declaração da diretiva block #}
+        <title>{% block title %}Welcome!{% endblock %}</title>
+    </head>
+    <body>
+        {# Interpolação do bloco já declarado #}
+        <h1>{{ block('title') }}</h1>
+
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>
+
+```
+
+Para fins de declaração de um bloco, as sintaxes com diretivas ou com interpolação tem o **mesmíssimo efeito, exceto que as páginas-filha são obrigadas a declarar a diretiva block**.
