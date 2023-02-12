@@ -176,3 +176,10 @@ O Twig possui filtros (pipes) que modificam as interpolações de variáveis do 
 Os blocos de comentário no Twig se escrevem entre `{#` e `#}`.
 
 Se a diretiva `block <nome>` não for invocada nas páginas-filha, elas usam o conteúdo padrão que está definido na página-pai.
+
+# Entendendo o conceito
+O Symfony possui o Encore, que é uma espécie de Webpack. Webpack é um tipo de bundler, e o bundler é uma ferramenta para automatizar a geração de arquivos para frontend. Se é necessário automatizar a geração desses arquivos, é porque o processo não é simples.
+
+Os frameworks JavaScript (React, Angular etc.) já possuem por padrão seus próprios bundlers.
+
+O Encore já vem instalado com o componente webapp do Symfony - ou seja, ele não vem no Symfony puro, mas vem no pacote webapp dele.
