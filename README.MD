@@ -182,4 +182,35 @@ O Symfony possui o Encore, que é uma espécie de Webpack. Webpack é um tipo de
 
 Os frameworks JavaScript (React, Angular etc.) já possuem por padrão seus próprios bundlers.
 
-O Encore já vem instalado com o componente webapp do Symfony - ou seja, ele não vem no Symfony puro, mas vem no pacote webapp dele.
+# Instalação do Encore
+```
+composer require symfony/webpack-encore-bundle
+```
+
+# Instalando o Bootstrap
+Para instalar o Bootstrap na raiz da aplicação como dependência de desenvolvimento:
+```
+npm install bootstrap@5.2 --save-dev
+```
+
+No site do Bootstrap há instruções de como configurar o Webpack, inclusive o arquivo webpack.config.js:
+https://getbootstrap.com/docs/5.2/getting-started/webpack/
+
+Depois da instalação do Encore, é criada a pasta `assets`, com o conteúdo usado no frontend (JavaScript e CSS). Nele editaremos a folha de estilo (por padrão é gerado um CSS, mas aqui substituiremos por um SCSS para uso do Webpack):
+```SCSS
+@import "~bootstrap/scss/bootstrap";
+```
+
+Vamos apagar a parte do JavaScript da pasta `assets`.
+
+Para rodar o Webpack, use o comando no npm:
+```
+npm run dev
+```
+
+Se falhar, provavalmente é porque faltou instalar o sass-loader:
+```
+npm install sass-loader@^13.0.0 sass --save-dev
+```
+
+^^Toda essa dor de cabeça pra gerar **apenas** um arquivo CSS a partir do Bootstrap.
