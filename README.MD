@@ -261,3 +261,13 @@ public function __construct(
 {
 }
 ```
+
+# Configurações
+O arquivo `.env` deveria guardar toda configuração que **não** esteja relacionada a credenciais de acesso.
+
+O arquivo `.env.local` não é versionado, mas é aplicado localmente no Symfony. Logo, criar esses arquivos é uma boa prática. A URL de conexão com o banco de dados deveria ficar no arquivo `.env.local`.
+
+Caso o Symfony não consiga ler o `.env.local`, execute o comando `composer dump-env <nome do ambiente>` para gerar um arquivo `.env.local.php`. Isso resolve o problema da aplicação, mas não do CLI do Console do Symfony:
+```
+composer dump-env prod
+```
